@@ -1,12 +1,12 @@
 minetest.register_on_receiving_chat_message(function(message)
 local text
-local sender = message:match('%S+: ')
+local sender = message:match('%S+ ')
 local csender = message:match('%S+: .+%(.+%)')
 if csender then
-local data = message:gsub('%S+: .+%(.+%)','')
+local data = message:gsub('%S+ .+%(.+%)','')
 text = core.decode_base64(data)
 elseif sender then
-local data = message:gsub('%S+: ','')
+local data = message:gsub('%S+ ','')
 text = core.decode_base64(data)
 end
 if text then
@@ -15,7 +15,7 @@ minetest.after(0.1,function()
 end)
 end
 end)
-minetest.register_chatcommand("s64", {
+minetest.register_chatcommand("b64", {
     description = "Say in base64",
     func = function(param)
 core.send_chat_message(core.encode_base64(param))
