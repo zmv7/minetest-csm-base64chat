@@ -3,10 +3,10 @@ local text
 local sender = message:match('%S+[:?>?] ')
 local csender = message:match('%S+[:?>?] .+%(.+%)')
 if csender then
-local data = message:gsub('%S+[:?>?] .+%(?.+%)','')
+local data = message:gsub('[%a*%d*]+[:?>?] .+%(?.+%)','')
 text = core.decode_base64(data)
 elseif sender then
-local data = message:gsub('%S+[:?>?] ','')
+local data = message:gsub('[%a*%d*]+[:?>?] ','')
 text = core.decode_base64(data)
 end
 if text then
