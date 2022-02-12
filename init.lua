@@ -1,7 +1,7 @@
 minetest.register_on_receiving_chat_message(function(message)
 local text
-local sender = message:match('%S+%p ')
-local csender = message:match('%S+%p .+%(.+%)')
+local sender = message:match('%S+[:?>?] ')
+local csender = message:match('%S+[:?>?] .+%(.+%)')
 if csender then
 local data = message:gsub('%S+ .+%(.+%)','')
 text = core.decode_base64(data)
