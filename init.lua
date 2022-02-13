@@ -1,9 +1,9 @@
 minetest.register_on_receiving_chat_message(function(message)
 local text
 local sender = message:match('%S+[:?>?] ')
-local csender = message:match('%S+[:?>?] .+%(.+%)')
+local csender = message:match('%S+[:?>?] %S+%(%S+%)')
 if csender then
-local data = message:gsub('[%a*%d*]+[:?>?] .+%(?.+%)','')
+local data = message:gsub('[%a*%d*]+[:?>?] %S+%(?%S+%)','')
 text = core.decode_base64(data)
 elseif sender then
 local data = message:gsub('[%a*%d*]+[:?>?] ','')
